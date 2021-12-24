@@ -10,7 +10,7 @@ app.get('/', function(req, res) {
         let errorMessage = { "error": "add your geeksForGeeks user Name in link eg /?userName=<YOUR_USER_NAME>" };
         res.send(errorMessage);
     } else {
-        let url = 'https://auth.geeksforgeeks.org/user/' + userName + '/practice/';
+        let url = "https://auth.geeksforgeeks.org/user/" + userName + "/practice/";
         request(url, function(error, response, html) {
             if (!error) {
                 var $ = cheerio.load(html);
