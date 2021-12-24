@@ -1,5 +1,5 @@
 const generateStats = (data)=>{
-    return (`<svg width="330" height="180" xmlns="http://www.w3.org/2000/svg">
+    return (`<svg width="330" height="180" xmlns="http://www.w3.org/2000/svg"  version="1.1">
     <style>
     svg {
         font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
@@ -60,7 +60,7 @@ const generateStats = (data)=>{
     <g>
         <foreignObject x="21" y="17" width="318" height="176" >
        
-            <div xmlns="http://www.w3.org/1999/xhtml" >
+            <div xmlns="http://www.w3.org/1999/xhtml"  version="1.1" >
                 <div class="topContainer" size="108">
                     <div class="problems-solved">Problems Solved on <a href=${data.url} target="_blank" style="cursor: pointer; color:green;font-size: 15px;">GeeksForGeeks</a></div>
                     <div class="total-solved-count">${data.totalProblemsSolved}</div>
