@@ -45,7 +45,7 @@ app.get('/', function(req, res) {
 
                     values["userName"] = userName;
                     values["totalProblemsSolved"] = totalProblemSolved;
-                    values["url"] = url;
+
                     let svg = generateStats(values);
                     res.setHeader("Content-Type", "image/svg+xml");
                     res.setHeader("Cache-Control", "s-max-age=60, stale-while-revalidate");
