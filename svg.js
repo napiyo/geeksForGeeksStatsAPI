@@ -62,7 +62,7 @@ const generateStats = (data)=>{
        
             <div xmlns="http://www.w3.org/1999/xhtml"  version="1.1" >
                 <div class="topContainer" size="108">
-                    <div class="problems-solved">Problems Solved on <a href=${data.url} target="_blank" style="cursor: pointer; color:green;font-size: 15px;">GeeksForGeeks</a></div>
+                    <div class="problems-solved">Problems Solved on <a href="#" target="_blank" style="cursor: pointer; color:green;font-size: 15px;">GeeksForGeeks</a></div>
                     <div class="total-solved-count">${data.totalProblemsSolved}</div>
                 </div>
                 <div class="bottom">
