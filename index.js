@@ -1,11 +1,6 @@
-// const express = require('express');
 import express from 'express';
 import request from 'request';
-// import { Cheerio } from 'cheerio';
 import cheerio from 'cheerio';
-// const request = require('request');
-// const cheerio = require('cheerio');
-// const generateStats = require('./svg');
 import generateStats from './svg.js';
 const app = express();
 
@@ -15,19 +10,12 @@ app.get('/', function(req, res) {
         let errorMessage = { "error": "add your geeksForGeeks user Name in link eg /?userName=<YOUR_USER_NAME>" };
         res.send(errorMessage);
     } else {
-        // let userName = 'radioactivenarendra';
         let url = 'https://auth.geeksforgeeks.org/user/' + userName + '/practice/';
-
         request(url, function(error, response, html) {
-            // First we'll check to make sure no errors occurred when making the request
             if (!error) {
-
-                // Next, we'll utilize the cheerio library on the returned html which will essentially give us jQuery functionality
                 var $ = cheerio.load(html);
-
                 let values = {};
                 let problemDificultyTag = ["School", "Basic", "Easy", "Medium", "Hard"];
-
                 let data = $('#problem-solved-div a.mdl-tabs__tab');
                 if (data.length == 0) {
                     res.status(400).send({ error: "userName does not exist or not solved any problem on geeksforgeeks" });
