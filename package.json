@@ -1,0 +1,26 @@
+{
+    "name": "geeksforgeeksstatsapi",
+    "version": "1.0.0",
+    "description": "API to get GFG stats as SVG",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "keywords": [
+        "GFG",
+        "geeksForGeeks",
+        "stats",
+        "github"
+    ],
+    "author": "Narendra Dewasi",
+    "license": "ISC",
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.10",
+        "express": "^4.17.2",
+        "request": "^2.88.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15"
+    }
+}
