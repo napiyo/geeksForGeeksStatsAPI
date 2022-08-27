@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { raw } from 'express';
 import request from 'request';
 import cheerio from 'cheerio';
 import generateStats from './svg.js';
@@ -16,30 +16,49 @@ app.get('/', function(req, res) {
                 var $ = cheerio.load(html);
                 let values = {};
                 let problemDificultyTag = ["School", "Basic", "Easy", "Medium", "Hard"];
-                let data = $('#problem-solved-div a.mdl-tabs__tab');
+                let k = 0;
+                // GFG updated UI
+                let data = $('.tabs.tabs-fixed-width.linksTypeProblem');
+
                 if (data.length == 0) {
                     res.status(400).send({ error: "userName does not exist or not solved any problem on geeksforgeeks" });
                 } else {
                     let totalProblemSolved = 0;
-                    data.each((i, x) => {
-                        let temp = $(x).text();
-                        let number = 0;
-                        for (let i = temp.length - 1; i > 0; i--) {
-                            if (temp[i] == ')') {
-                                let j = i - 1;
 
-                                while (temp[j] != '(') {
-
-                                    j--;
-                                }
-                                number = parseInt(temp.substring(j + 1, i));
-                                totalProblemSolved += number;
-
-                                break;
+                    let rawData = $(data[0]).text();
+                    for (let i = 0; i < rawData.length; i++) {
+                        if (rawData[i] == '(') {
+                            let tempStart = i + 1;
+                            while (rawData[i] != ')') {
+                                i++;
                             }
+                            let tempProblems = parseInt(rawData.substring(tempStart, i));
+                            values[problemDificultyTag[k++]] = tempProblems;
+                            totalProblemSolved += tempProblems;
+
                         }
-                        values[problemDificultyTag[i]] = number;
-                    })
+                    }
+                    // old structure of GFG
+                    // data.each((i, x) => {
+                    //     let temp = $(x).text();
+                    //     let number = 0;
+                    //     console.log(temp);
+                    //     for (let i = temp.length - 1; i > 0; i--) {
+                    //         if (temp[i] == ')') {
+                    //             let j = i - 1;
+
+                    //             while (temp[j] != '(') {
+
+                    //                 j--;
+                    //             }
+                    //             number = parseInt(temp.substring(j + 1, i));
+                    //             totalProblemSolved += number;
+
+                    //             break;
+                    //         }
+                    //     }
+                    //     values[problemDificultyTag[i]] = number;
+                    // })
 
 
 
