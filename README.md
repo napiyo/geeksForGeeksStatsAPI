@@ -16,6 +16,8 @@ API to get count of total problems solved on [GeeksForGeeks](https://practice.ge
  - if you have blank space in your userName dont use Blank Space use %20
  > for example if your GeeksForGeeks userName is "narendra dewasi" , then  you'll need to replace <YOUR_USERNAME> with narendra%20dewasi
 
+- if you want JSON response add 'json' parameter to the url
+> for example /?userName=<YOUR_USERNAME>&json
 
  > that's it, if you get any error , make sure you have solved at least 1 problem on GFG and cross check username and link 
 
