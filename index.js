@@ -64,11 +64,18 @@ app.get('/', function(req, res) {
 
                     values["userName"] = userName;
                     values["totalProblemsSolved"] = totalProblemSolved;
-
-                    let svg = generateStats(values);
-                    res.setHeader("Content-Type", "image/svg+xml");
-                    res.setHeader("Cache-Control", "s-max-age=60, stale-while-revalidate");
-                    res.send(svg);
+                    if ("json" in req.query) {
+                        res.send(values);
+                    } else {
+                        let svg = generateStats(values);
+                        res.setHeader("Content-Type", "image/svg+xml");
+                        res.setHeader(
+                            "Cache-Control",
+                            "s-max-age=60, stale-while-revalidate"
+                        );
+                        res.send(svg);
+                    }
+                    
                 }
             } else {
                 console.log(error);
