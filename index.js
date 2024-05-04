@@ -4,80 +4,54 @@ import cheerio from 'cheerio';
 import generateStats from './svg.js';
 const app = express();
 
-app.get('/', function(req, res) {
-    let userName = req.query.userName;
-    if (!userName) {
-        let errorMessage = { "error": "add your geeksForGeeks user Name in link eg /?userName=<YOUR_USER_NAME>" };
-        res.send(errorMessage);
-    } else {
-        let url = "https://auth.geeksforgeeks.org/user/" + userName + "/practice/";
-        request(url, function(error, response, html) {
-            if (!error) {
-                var $ = cheerio.load(html);
-                let values = {};
-                let problemDificultyTag = ["School", "Basic", "Easy", "Medium", "Hard"];
-                let k = 0;
-                // GFG updated UI
-                let data = $('.tabs.tabs-fixed-width.linksTypeProblem');
 
-                if (data.length == 0) {
-                    res.status(400).send({ error: "userName does not exist or not solved any problem on geeksforgeeks" });
-                } else {
-                    let totalProblemSolved = 0;
+let validateQuery = (req, res, next) => {
+    if (!req.query.userName) return res.send({ "error": "add your geeksForGeeks user Name in link eg /?userName=<YOUR_USER_NAME>" });
+    next()
+}
 
-                    let rawData = $(data[0]).text();
-                    for (let i = 0; i < rawData.length; i++) {
-                        if (rawData[i] == '(') {
-                            let tempStart = i + 1;
-                            while (rawData[i] != ')') {
-                                i++;
-                            }
-                            let tempProblems = parseInt(rawData.substring(tempStart, i));
-                            values[problemDificultyTag[k++]] = tempProblems;
-                            totalProblemSolved += tempProblems;
+let getStat = (req, res, next) => {
+    let url = "https://auth.geeksforgeeks.org/user/" + userName + "/practice/";
+    request(url, function(error, response, html) {
+        if (error) return res.status(502).send(error.errorMessage);
 
-                        }
-                    }
-                    // old structure of GFG
-                    // data.each((i, x) => {
-                    //     let temp = $(x).text();
-                    //     let number = 0;
-                    //     console.log(temp);
-                    //     for (let i = temp.length - 1; i > 0; i--) {
-                    //         if (temp[i] == ')') {
-                    //             let j = i - 1;
+        var $ = cheerio.load(html);
+        let values = {};
+        let problemDificultyTag = ["School", "Basic", "Easy", "Medium", "Hard"];
+        let k = 0,
+            totalProblemSolved = 0;
+        let data = $('.tabs.tabs-fixed-width.linksTypeProblem');
 
-                    //             while (temp[j] != '(') {
-
-                    //                 j--;
-                    //             }
-                    //             number = parseInt(temp.substring(j + 1, i));
-                    //             totalProblemSolved += number;
-
-                    //             break;
-                    //         }
-                    //     }
-                    //     values[problemDificultyTag[i]] = number;
-                    // })
+        if (data.length == 0) return res.status(400).send({ error: "userName does not exist or not solved any problem on geeksforgeeks" });
 
 
-
-                    values["userName"] = userName;
-                    values["totalProblemsSolved"] = totalProblemSolved;
-
-                    let svg = generateStats(values);
-                    res.setHeader("Content-Type", "image/svg+xml");
-                    res.setHeader("Cache-Control", "s-max-age=60, stale-while-revalidate");
-                    res.send(svg);
+        let rawData = $(data[0]).text();
+        for (let i = 0; i < rawData.length; i++) {
+            if (rawData[i] == '(') {
+                let tempStart = i + 1;
+                while (rawData[i] != ')') {
+                    i++;
                 }
-            } else {
-                console.log(error);
+                let tempProblems = parseInt(rawData.substring(tempStart, i));
+                values[problemDificultyTag[k++]] = tempProblems;
+                totalProblemSolved += tempProblems;
+
             }
+        }
+        values["userName"] = userName;
+        values["totalProblemsSolved"] = totalProblemSolved;
+        req.values = values;
+    })
+}
+let sendStat = (req, res, next) => {
+    if (req.query.raw) return res.send(req.values);
+    let svg = generateStats(values);
+    res.setHeader("Content-Type", "image/svg+xml");
+    res.setHeader("Cache-Control", "s-max-age=60, stale-while-revalidate");
+    res.send(svg);
+}
 
-        });
-    }
-});
-
+app.get('/', validateQuery, getStat, sendStat);
 
 const port = process.env.PORT || 2001;
 app.listen(port, () =>
