@@ -22,7 +22,20 @@ API to get count of total problems solved on [GeeksForGeeks](https://practice.ge
 
  > send me message if any error occur [LinkedIn](https://www.linkedin.com/in/narendra-dewasi/)
 
- ### API END POINT
+#### copy this code 👇🏻 for MARKDOWN for gitHub (svg response)
+```
+[![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api.vercel.app/?userName=<YOUR_USERNAME>)](https://github.com/napiyo/geeksForGeeksStatsAPI)
+```
+
+## make clickable
+by default when you click on stat box you'll redirect to this github. if you want to redirect to your geeksForgeeks profile or any other replace **`<YOUR_LINK_HERE>`**.
+> DONT FORGET to replace userName as mentioned before
+> dont use `"` in your link , simple paste it
+```
+[![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api.vercel.app/?userName=<YOUR_USERNAME>)](<YOUR_LINK_HERE>)
+ ```
+ 
+  ### API END POINT
  ```
  https://geeks-for-geeks-stats-api.vercel.app/?raw=<Y/N>&userName=<GFG_USERNAME>
  ```
@@ -46,20 +59,7 @@ API to get count of total problems solved on [GeeksForGeeks](https://practice.ge
 }
 ```
 
-#### copy this code 👇🏻
-```
-[![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api.vercel.app/?userName=<YOUR_USERNAME>)](https://github.com/napiyo/geeksForGeeksStatsAPI)
-```
 
-## make clickable
-by default when you click on stat box you'll redirect to this github. if you want to redirect to your geeksForgeeks profile or any other replace **`<YOUR_LINK_HERE>`**.
-> DONT FORGET to replace userName as mentioned before
-> dont use `"` in your link , simple paste it
-```
-[![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api.vercel.app/?userName=<YOUR_USERNAME>)](<YOUR_LINK_HERE>)
- ```
- 
- 
  <br>
  
  # Any contribution to this repo is highly appreciated
