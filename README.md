@@ -1,5 +1,5 @@
 <p align="center">
- <h1 align="center">geeksForGeeksStats API</h1>
+ <h1 align="center">geeksForGeeksStats API - GFG updated UI</h1>
  <p align="center">Dynamically generated GeeksForGeeks stats for your readmes!</p>
 </p>
 
