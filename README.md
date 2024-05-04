@@ -24,9 +24,14 @@ API to get count of total problems solved on [GeeksForGeeks](https://practice.ge
 
  ### API END POINT
  ```
- https://geeks-for-geeks-stats-api-napiyo.vercel.app/?raw=<Y/N>&userName=<GFG_USERNAME>
+ https://geeks-for-geeks-stats-api.vercel.app/?raw=<Y/N>&userName=<GFG_USERNAME>
  ```
-To get Response in JSON use raw=y query, else dont pass raw
+> To get Response in JSON use raw=y query, else dont pass raw
+
+
+> [!TIP]
+> **API domain is updated, Use this New API it supports JSON response also**: OLD api is also live.
+
 
 ### API RES in JSON
 ```
@@ -43,7 +48,7 @@ To get Response in JSON use raw=y query, else dont pass raw
 
 #### copy this code 👇🏻
 ```
-[![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api-napiyo.vercel.app/?userName=<YOUR_USERNAME>)](https://github.com/napiyo/geeksForGeeksStatsAPI)
+[![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api.vercel.app/?userName=<YOUR_USERNAME>)](https://github.com/napiyo/geeksForGeeksStatsAPI)
 ```
 
 ## make clickable
@@ -51,7 +56,7 @@ by default when you click on stat box you'll redirect to this github. if you wan
 > DONT FORGET to replace userName as mentioned before
 > dont use `"` in your link , simple paste it
 ```
-[![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api-napiyo.vercel.app/?userName=<YOUR_USERNAME>)](<YOUR_LINK_HERE>)
+[![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api.vercel.app/?userName=<YOUR_USERNAME>)](<YOUR_LINK_HERE>)
  ```
  
  
