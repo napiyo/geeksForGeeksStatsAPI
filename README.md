@@ -22,6 +22,25 @@ API to get count of total problems solved on [GeeksForGeeks](https://practice.ge
 
  > send me message if any error occur [LinkedIn](https://www.linkedin.com/in/narendra-dewasi/)
 
+ ### API END POINT
+ ```
+ https://geeks-for-geeks-stats-api-napiyo.vercel.app/?raw=<Y/N>&userName=<GFG_USERNAME>
+ ```
+To get Response in JSON use raw=y query, else dont pass raw
+
+### API RES in JSON
+```
+{
+  "School": 5,
+  "Basic": 27,
+  "Easy": 56,
+  "Medium": 97,
+  "Hard": 8,
+  "userName": "napiyo",
+  "totalProblemsSolved": 193
+}
+```
+
 #### copy this code 👇🏻
 ```
 [![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api-napiyo.vercel.app/?userName=<YOUR_USERNAME>)](https://github.com/napiyo/geeksForGeeksStatsAPI)
@@ -35,10 +54,6 @@ by default when you click on stat box you'll redirect to this github. if you wan
 [![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api-napiyo.vercel.app/?userName=<YOUR_USERNAME>)](<YOUR_LINK_HERE>)
  ```
  
- ### API END POINT
- ```
- https://geeks-for-geeks-stats-api-napiyo.vercel.app/
- ```
  
  <br>
  
