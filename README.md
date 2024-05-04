@@ -35,6 +35,13 @@ by default when you click on stat box you'll redirect to this github. if you wan
 [![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api-napiyo.vercel.app/?userName=<YOUR_USERNAME>)](<YOUR_LINK_HERE>)
  ```
  
+## Get Json Response
+To get the JSON response add format in the URL
+```
+https://geeks-for-geeks-stats-api-napiyo.vercel.app/?userName=<YOUR_USERNAME>&format=json
+```
+
+
  ### API END POINT
  ```
  https://geeks-for-geeks-stats-api-napiyo.vercel.app/

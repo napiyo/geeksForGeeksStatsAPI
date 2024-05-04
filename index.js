@@ -6,6 +6,7 @@ const app = express();
 
 app.get('/', function(req, res) {
     let userName = req.query.userName;
+    let format = req.query.format;  // Get the format query parameter
     if (!userName) {
         let errorMessage = { "error": "add your geeksForGeeks user Name in link eg /?userName=<YOUR_USER_NAME>" };
         res.send(errorMessage);
@@ -65,10 +66,16 @@ app.get('/', function(req, res) {
                     values["userName"] = userName;
                     values["totalProblemsSolved"] = totalProblemSolved;
 
-                    let svg = generateStats(values);
-                    res.setHeader("Content-Type", "image/svg+xml");
-                    res.setHeader("Cache-Control", "s-max-age=60, stale-while-revalidate");
-                    res.send(svg);
+                    if (format === 'json') {
+                        // If the format is JSON, send the values as JSON
+                        res.json(values);
+                    } else {
+                        // Otherwise, generate and send SVG
+                        let svg = generateStats(values);
+                        res.setHeader("Content-Type", "image/svg+xml");
+                        res.setHeader("Cache-Control", "s-max-age=60, stale-while-revalidate");
+                        res.send(svg);
+                    }
                 }
             } else {
                 console.log(error);
