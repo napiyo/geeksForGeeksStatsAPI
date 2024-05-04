@@ -44,7 +44,7 @@ let getStat = (req, res, next) => {
     })
 }
 let sendStat = (req, res, next) => {
-    if (req.query.raw) return res.send(req.values);
+    if (req.query.raw?.toLowerCase() == "y") return res.send(req.values);
     let svg = generateStats(req.values);
     res.setHeader("Content-Type", "image/svg+xml");
     res.setHeader("Cache-Control", "s-max-age=60, stale-while-revalidate");
