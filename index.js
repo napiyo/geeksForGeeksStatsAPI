@@ -11,10 +11,9 @@ let validateQuery = (req, res, next) => {
 }
 
 let getStat = (req, res, next) => {
-    let url = "https://auth.geeksforgeeks.org/user/" + userName + "/practice/";
+    let url = "https://auth.geeksforgeeks.org/user/" + req.query.userName + "/practice/";
     request(url, function(error, response, html) {
         if (error) return res.status(502).send(error.errorMessage);
-
         var $ = cheerio.load(html);
         let values = {};
         let problemDificultyTag = ["School", "Basic", "Easy", "Medium", "Hard"];
@@ -38,14 +37,15 @@ let getStat = (req, res, next) => {
 
             }
         }
-        values["userName"] = userName;
+        values["userName"] = req.query.userName;
         values["totalProblemsSolved"] = totalProblemSolved;
         req.values = values;
+        next()
     })
 }
 let sendStat = (req, res, next) => {
     if (req.query.raw) return res.send(req.values);
-    let svg = generateStats(values);
+    let svg = generateStats(req.values);
     res.setHeader("Content-Type", "image/svg+xml");
     res.setHeader("Cache-Control", "s-max-age=60, stale-while-revalidate");
     res.send(svg);
