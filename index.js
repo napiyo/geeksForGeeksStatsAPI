@@ -2,9 +2,10 @@ import express, { raw } from 'express';
 import request from 'request';
 import cheerio from 'cheerio';
 import generateStats from './svg.js';
+import cors from 'cors';
+
 const app = express();
-
-
+app.use(cors());
 let validateQuery = (req, res, next) => {
     if (!req.query.userName) return res.send({ "error": "add your geeksForGeeks user Name in link eg /?userName=<YOUR_USER_NAME>" });
     next()
