@@ -22,11 +22,29 @@ API to get count of total problems solved on [GeeksForGeeks](https://practice.ge
 
  > send me message if any error occur [LinkedIn](https://www.linkedin.com/in/narendra-dewasi/)
 
- ### API END POINT
+#### copy this code 👇🏻 for MARKDOWN for gitHub (svg response)
+```
+[![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api.vercel.app/?userName=<YOUR_USERNAME>)](https://github.com/napiyo/geeksForGeeksStatsAPI)
+```
+
+## make clickable
+by default when you click on stat box you'll redirect to this github. if you want to redirect to your geeksForgeeks profile or any other replace **`<YOUR_LINK_HERE>`**.
+> DONT FORGET to replace userName as mentioned before
+> dont use `"` in your link , simple paste it
+```
+[![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api.vercel.app/?userName=<YOUR_USERNAME>)](<YOUR_LINK_HERE>)
  ```
- https://geeks-for-geeks-stats-api-napiyo.vercel.app/?raw=<Y/N>&userName=<GFG_USERNAME>
+ 
+  ### API END POINT
  ```
-To get Response in JSON use raw=y query, else dont pass raw
+ https://geeks-for-geeks-stats-api.vercel.app/?raw=<Y/N>&userName=<GFG_USERNAME>
+ ```
+> To get Response in JSON use raw=y query, else dont pass raw
+
+
+> [!TIP]
+> **API domain is updated, Use this New API it supports JSON response also**: OLD api is also live.
+
 
 ### API RES in JSON
 ```
@@ -41,20 +59,7 @@ To get Response in JSON use raw=y query, else dont pass raw
 }
 ```
 
-#### copy this code 👇🏻
-```
-[![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api-napiyo.vercel.app/?userName=<YOUR_USERNAME>)](https://github.com/napiyo/geeksForGeeksStatsAPI)
-```
 
-## make clickable
-by default when you click on stat box you'll redirect to this github. if you want to redirect to your geeksForgeeks profile or any other replace **`<YOUR_LINK_HERE>`**.
-> DONT FORGET to replace userName as mentioned before
-> dont use `"` in your link , simple paste it
-```
-[![Narendra's geeksForgeeks stats](https://geeks-for-geeks-stats-api-napiyo.vercel.app/?userName=<YOUR_USERNAME>)](<YOUR_LINK_HERE>)
- ```
- 
- 
  <br>
  
  # Any contribution to this repo is highly appreciated
