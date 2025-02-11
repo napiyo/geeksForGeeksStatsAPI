@@ -1,6 +1,6 @@
 import express, { raw } from 'express';
 import request from 'request';
-import cheerio from 'cheerio';
+import * as cheerio from 'cheerio';
 import generateStats from './svg.js';
 import cors from 'cors';
 
@@ -12,7 +12,7 @@ let validateQuery = (req, res, next) => {
 }
 
 let getStat = (req, res, next) => {
-    let url = "https://auth.geeksforgeeks.org/user/" + req.query.userName + "/practice/";
+    let url = "https://www.geeksforgeeks.org/user/" + req.query.userName;
     request(url, function(error, response, html) {
         if (error) return res.status(502).send(error.errorMessage);
         var $ = cheerio.load(html);
@@ -20,7 +20,7 @@ let getStat = (req, res, next) => {
         let problemDificultyTag = ["School", "Basic", "Easy", "Medium", "Hard"];
         let k = 0,
             totalProblemSolved = 0;
-        let data = $('.tabs.tabs-fixed-width.linksTypeProblem');
+        let data = $('.problemNavbar_head__cKSRi');
 
         if (data.length == 0) return res.status(400).send({ error: "userName does not exist or not solved any problem on geeksforgeeks" });
 
